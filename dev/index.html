@@ -34,7 +34,16 @@
 						Most Visited
 					</div>
 					<div class="panel-body">
-						{{vm.topSites}}
+						<div layout="row" layout-margin layout-align="space-around center">
+							<div flex class="site-thumbnail" ng-repeat="site in vm.topSites | limitTo: 5">
+								<img src="{{site.favicon}}" width="16px"/>
+							</div>
+						</div>
+						<div layout="row" layout-margin layout-align="space-around center">
+							<div flex class="site-thumbnail" ng-repeat="site in vm.topSites | limitTo: 5:5">
+								<img src="{{site.favicon}}" width="16px"/>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
