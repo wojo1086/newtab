@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="NewTab">
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- inject:css -->
+	<!-- endinject -->
+
+	<!-- inject:js -->
+	<!-- endinject -->
+</head>
+<body ng-controller="DashboardController as vm">
+	<header>
+		<div layout="column">
+			<div class="search-bar" flex>
+				<span>
+					<input type="text" placeholder="Google..."/>
+					<i class="material-icons">search</i>
+				</span>
+			</div>
+		</div>
+	</header>
+	<div class="main-body">
+		<div class="welcome-bar">
+			Hello Tim!
+		</div>
+		<div layout="row" layout-margin layout-align="space-around center">
+			<div flex>
+				<div class="panel">
+					<div class="panel-header">
+						Most Visited
+					</div>
+					<div class="panel-body">
+						{{vm.topSites}}
+					</div>
+				</div>
+			</div>
+			<div flex>
+				<div class="panel">
+					<div class="panel-header">
+						Recently Visited
+					</div>
+					<div class="panel-body">
+						This is a body
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
