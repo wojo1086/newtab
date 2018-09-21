@@ -1,26 +1,12 @@
 body
-	background: url("images/blurred-background-1.jpg") center center no-repeat fixed
+	background: url("../images/blurred-background-1.jpg") center center no-repeat fixed
 	background-size: cover
 
 .layout-margin
 	margin: 16px
 
-	&>*, &>.flex
+	&>*, &>.flex, &:not(most-visited-link.flex)
 		margin: 16px
-
-.panel
-	border-radius: 5px
-	background-color: rgba(255, 255, 255, .2)
-	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .25)
-	color: #EFEFEF
-
-	.panel-header
-		border-bottom: 1px solid rgba(0, 0, 0, .12)
-		box-shadow: 0 1px 0 0 rgba(255, 255, 255, .12)
-		font-size: 16px
-		padding: 14px 22px
-		text-transform: uppercase
-		font-weight: 600
 
 //.site-thumbnail
 //	display: inline-block

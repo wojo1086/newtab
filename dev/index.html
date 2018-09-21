@@ -27,35 +27,29 @@
 		<div class="welcome-bar">
 			Hello Tim!
 		</div>
-		<div layout="row" layout-margin layout-align="space-around center">
+		<div layout="row" layout-margin layout-align="space-around start">
 			<div flex>
-				<div class="panel">
-					<div class="panel-header">
-						Most Visited
+				<nt-panel header="'Most Visited'">
+					<div layout="row" layout-margin layout-align="space-around center">
+						<most-visited-link
+								ng-repeat="site in vm.topSites | limitTo: 5"
+								flex
+								class="site-thumbnail"
+								site="site"></most-visited-link>
 					</div>
-					<div class="panel-body">
-						<div layout="row" layout-margin layout-align="space-around center">
-							<div flex class="site-thumbnail" ng-repeat="site in vm.topSites | limitTo: 5">
-								<img src="{{site.favicon}}" width="16px"/>
-							</div>
-						</div>
-						<div layout="row" layout-margin layout-align="space-around center">
-							<div flex class="site-thumbnail" ng-repeat="site in vm.topSites | limitTo: 5:5">
-								<img src="{{site.favicon}}" width="16px"/>
-							</div>
-						</div>
+					<div layout="row" layout-margin layout-align="space-around center">
+						<most-visited-link
+								ng-repeat="site in vm.topSites | limitTo: 5:5"
+								flex
+								class="site-thumbnail"
+								site="site"></most-visited-link>
 					</div>
-				</div>
+				</nt-panel>
 			</div>
 			<div flex>
-				<div class="panel">
-					<div class="panel-header">
-						Recently Visited
-					</div>
-					<div class="panel-body">
-						This is a body
-					</div>
-				</div>
+				<nt-panel header="'Recently Visited'">
+					This is a body.
+				</nt-panel>
 			</div>
 		</div>
 	</div>
