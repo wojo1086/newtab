@@ -5,11 +5,16 @@
     "chrome_url_overrides": {
         "newtab": "index.html"
     },
+	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
     "permissions": [
         "topSites",
         "storage",
-        "cookies",
-        "*://*.*.*"
+        "activeTab",
+		"tabs"
     ],
     "icons": {
         "16": "images/get_started16.png",

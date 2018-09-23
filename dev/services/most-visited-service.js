@@ -11,6 +11,7 @@
 
 		function getMostVisited() {
 			return $q(function(resolve) {
+
 				chrome.topSites.get(function (data) {
 					data.forEach(function(url) {
 						url.favicon = 'http://s2.googleusercontent.com/s2/favicons?domain_url=' + url.url;

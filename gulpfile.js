@@ -43,8 +43,16 @@ gulp.task('copy-html', function () {
 	.pipe(gulp.dest('app/'));
 });
 
-gulp.task('copy-js', ['inject-css'], function () {
-	return gulp.src('dev/**/*.js')
+gulp.task('copy-background-js', function() {
+	return gulp.src('dev/background.js')
+		.pipe(gulp.dest('app/'));
+});
+
+gulp.task('copy-js', ['inject-css', 'copy-background-js'], function () {
+	return gulp.src([
+		'dev/**/*.js',
+		'!dev/background.js'
+	])
 	.pipe(ngAnnotate())
 	.pipe(sourcemaps.init())
 	.pipe(concat('newtab.js'))
@@ -74,7 +82,8 @@ gulp.task('inject-js', ['copy-js', 'copy-node-modules'], function () {
 	var target = gulp.src('app/index.html');
 	var sources = gulp.src([
 		'app/newtab.js',
-		'app/libs/libs.js'
+		'app/libs/libs.js',
+		'!app/background.js'
 	]).pipe(angularFilesort());
 	return target.pipe(inject(sources, {relative: true}))
 	.pipe(gulp.dest('app/'))
