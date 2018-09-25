@@ -13,7 +13,7 @@ gulp.task('default', ['connect', 'watch', 'start', 'copy-node-modules-styles'], 
 
 });
 
-gulp.task('start', ['inject-js', 'move-manifest', 'move-images']);
+gulp.task('start', ['inject-js', 'move-manifest', 'move-images', 'copy-compression']);
 
 //gulp.task('inject-js', ['copy-js',
 //	'copy-node-modules-styles',
@@ -46,6 +46,14 @@ gulp.task('copy-html', function () {
 gulp.task('copy-background-js', function() {
 	return gulp.src('dev/background.js')
 		.pipe(gulp.dest('app/'));
+});
+
+gulp.task('copy-compression', function() {
+	return gulp.src([
+		'lz-string-master/libs/lz-string.min.js',
+		'lz-string-master/libs/base64-string.js']
+	)
+		.pipe(gulp.dest('app/libs/'));
 });
 
 gulp.task('copy-js', ['inject-css', 'copy-background-js'], function () {
@@ -83,7 +91,9 @@ gulp.task('inject-js', ['copy-js', 'copy-node-modules'], function () {
 	var sources = gulp.src([
 		'app/newtab.js',
 		'app/libs/libs.js',
-		'!app/background.js'
+		'!app/background.js',
+		'app/libs/lz-string.min.js',
+		'app/libs/base64-string.js'
 	]).pipe(angularFilesort());
 	return target.pipe(inject(sources, {relative: true}))
 	.pipe(gulp.dest('app/'))
