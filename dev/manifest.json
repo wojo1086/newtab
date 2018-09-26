@@ -17,7 +17,9 @@
         "storage",
 		"<all_urls>",
 		"tabs",
-		"storage"
+		"storage",
+		"downloads",
+		"bookmarks"
     ],
     "icons": {
         "16": "images/get_started16.png",
