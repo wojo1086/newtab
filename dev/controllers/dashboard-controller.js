@@ -18,7 +18,9 @@
 			vm.downloads = data.reverse();
 		});
 
-		BookmarksService.getAllBookmarks();
+		BookmarksService.getAllBookmarks().then(function(data) {
+			vm.bookmarks = data[0];
+		});
 
 		StorageService.getAllData();
 	}

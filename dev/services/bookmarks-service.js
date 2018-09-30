@@ -13,6 +13,7 @@
 			return $q(function(resolve) {
 				chrome.bookmarks.getTree(function(data) {
 					console.log(data);
+					resolve(data);
 				});
 			});
 		}
