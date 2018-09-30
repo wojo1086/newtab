@@ -4,7 +4,7 @@
 	angular.module('NewTab')
 	.controller('DashboardController', DashboardController);
 
-	function DashboardController(BookmarksService,
+	function DashboardController(bookmarks,
 	                             DownloadsService,
 	                             MostVisitedService,
 	                             StorageService) {
@@ -18,9 +18,9 @@
 			vm.downloads = data.reverse();
 		});
 
-		BookmarksService.getAllBookmarks().then(function(data) {
-			vm.bookmarks = data[0];
-		});
+		//BookmarksService.getAllBookmarks().then(function(data) {
+			vm.bookmarks = bookmarks;
+		//});
 
 		StorageService.getAllData();
 	}

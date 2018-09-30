@@ -14,8 +14,25 @@
 			link: bookmarkTreeLink
 		};
 
-		function bookmarkTemplate(a, b) {
-			console.log(a, b);
+		function bookmarkTemplate(element, attrs) {
+			console.log(element, attrs);
+			var bookmarks = attrs.bookmarks;
+			var template = '<ul>';
+
+			goDeeper(bookmarks);
+
+			function goDeeper(bk) {
+				for (var i = 0, k = bk.length; i < k; i++) {
+					template += '<li>' + bk[i].title + '</li>';
+					if (bk[i].hasOwnProperty('children')) {
+						goDeeper(bk[i].children);
+					}
+				}
+			}
+
+			template += '</ul>';
+
+			return template;
 		}
 
 		function bookmarkTreeLink(scope, elem, attrs) {
