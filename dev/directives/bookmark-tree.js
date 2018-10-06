@@ -17,20 +17,7 @@
 		function bookmarkTemplate(element, attrs) {
 			console.log(element, attrs);
 			var bookmarks = attrs.bookmarks;
-			var template = '<ul>';
-
-			goDeeper(bookmarks);
-
-			function goDeeper(bk) {
-				for (var i = 0, k = bk.length; i < k; i++) {
-					template += '<li>' + bk[i].title + '</li>';
-					if (bk[i].hasOwnProperty('children')) {
-						goDeeper(bk[i].children);
-					}
-				}
-			}
-
-			template += '</ul>';
+			var template = '<ul><li ng-repeat="item in bookmarks">{{item.title}} <bookmark-tree ng-if="!!item.children" bookmarks="item.children"></bookmark-tree></li></ul>';
 
 			return template;
 		}
