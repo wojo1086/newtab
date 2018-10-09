@@ -1,3 +1,22 @@
-ul.hidden
-	bookmark-tree
-		display: none
+bookmark-tree
+	&.hidden
+		& > ul
+			display: none
+
+	ul
+		padding-inline-start: 20px
+		padding-top: 5px
+
+		li
+			outline: none
+			cursor: pointer
+			font-size: 12px
+			letter-spacing: .5px
+			list-style-type: none
+			padding: 0 0 8px 22px
+			position: relative
+
+			img
+				position: absolute
+				left: 0
+				top: -2px

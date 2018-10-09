@@ -9,7 +9,7 @@
 			restrict: 'E',
 			scope: {
 				bookmarks: '=',
-				display: '='
+				hideTree: '='
 			},
 			template: bookmarkTemplate,
 			link: bookmarkTreeLink
@@ -18,12 +18,13 @@
 		function bookmarkTemplate(element, attrs) {
 			console.log(element, attrs);
 			var bookmarks = attrs.bookmarks;
-			var template = '<ul ng-class="{hidden: display}">' +
+			var template = '<ul>' +
 				'<li ng-repeat="item in bookmarks" ng-click="handleItemClicked($event)">' +
+						'<img ng-src="{{getIcon(item)}}" width="18px">' +
 						'{{(item.title === \'\') ? \'Bookmarks\' : item.title}}' +
 						'<bookmark-tree ' +
 							'ng-if="!!item.children"' +
-							'display="false"' +
+							'class="hidden"' +
 							'bookmarks="item.children">' +
 						'</bookmark-tree>' +
 				'</li>' +
@@ -36,6 +37,7 @@
 			console.log(scope, elem, attrs);
 
 			scope.handleItemClicked = handleItemClicked;
+			scope.getIcon = getIcon;
 
 			Initialize();
 
@@ -46,10 +48,18 @@
 
 			}
 
+			function getIcon(item) {
+				var icon = '/images/folder.png';
+				if (!item.children) {
+					icon = 'http://s2.googleusercontent.com/s2/favicons?domain_url=' + item.url;
+				}
+				return icon;
+			}
+
 			function handleItemClicked(evt) {
 				evt.stopPropagation();
-				console.log(angular.element(angular.element(evt.currentTarget).find('ul')[0]));
-				angular.element(angular.element(evt.currentTarget).find('ul')[0]).toggleClass('hidden');
+				console.log(angular.element(angular.element(evt.currentTarget).find('bookmark-tree')[0]));
+				angular.element(angular.element(evt.currentTarget).find('bookmark-tree')[0]).toggleClass('hidden');
 			}
 		}
 	}
