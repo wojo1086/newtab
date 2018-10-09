@@ -8,7 +8,8 @@
 		return {
 			restrict: 'E',
 			scope: {
-				bookmarks: '='
+				bookmarks: '=',
+				display: '='
 			},
 			template: bookmarkTemplate,
 			link: bookmarkTreeLink
@@ -17,12 +18,12 @@
 		function bookmarkTemplate(element, attrs) {
 			console.log(element, attrs);
 			var bookmarks = attrs.bookmarks;
-			var template = '<ul ng-class="{visible: true}">' +
-				'<li ng-repeat="item in bookmarks"' +
-					'ng-click="handleItemClicked($event)">' +
+			var template = '<ul ng-class="{hidden: display}">' +
+				'<li ng-repeat="item in bookmarks" ng-click="handleItemClicked($event)">' +
 						'{{(item.title === \'\') ? \'Bookmarks\' : item.title}}' +
 						'<bookmark-tree ' +
 							'ng-if="!!item.children"' +
+							'display="false"' +
 							'bookmarks="item.children">' +
 						'</bookmark-tree>' +
 				'</li>' +
@@ -36,12 +37,19 @@
 
 			scope.handleItemClicked = handleItemClicked;
 
-			scope.$watch('bookmarks', function(n, o) {
-				console.log(n, o);
-			});
+			Initialize();
+
+			function Initialize() {
+				scope.$watch('bookmarks', function (n, o) {
+					console.log(n, o);
+				});
+
+			}
 
 			function handleItemClicked(evt) {
-				console.log(angular.element(evt.currentTarget).find('li')[0]);
+				evt.stopPropagation();
+				console.log(angular.element(angular.element(evt.currentTarget).find('ul')[0]));
+				angular.element(angular.element(evt.currentTarget).find('ul')[0]).toggleClass('hidden');
 			}
 		}
 	}
