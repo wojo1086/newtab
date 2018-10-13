@@ -22,6 +22,9 @@
 			vm.bookmarks = bookmarks;
 		//});
 
-		StorageService.getAllData();
+		StorageService.getAllData().then(function(data) {
+			vm.storage = data;
+			console.log(data);
+		});
 	}
 })();
