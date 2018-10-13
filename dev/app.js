@@ -2,7 +2,8 @@
 	angular.module('NewTab', [
 		'ngMaterial',
 		'ngMessages',
-		'ui.router'
+		'ui.router',
+		'chart.js'
 	])
 	.config(['$compileProvider', function ($compileProvider) {
 		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|local|data|chrome-extension):/);

@@ -16,7 +16,7 @@
 		};
 
 		function bookmarkTemplate(element, attrs) {
-			console.log(element, attrs);
+			//console.log(element, attrs);
 			var bookmarks = attrs.bookmarks;
 			var template = '<ul>' +
 				'<li ng-repeat="item in bookmarks" ng-click="handleItemClicked($event)">' +
@@ -34,7 +34,7 @@
 		}
 
 		function bookmarkTreeLink(scope, elem, attrs) {
-			console.log(scope, elem, attrs);
+			//console.log(scope, elem, attrs);
 
 			scope.handleItemClicked = handleItemClicked;
 			scope.getIcon = getIcon;
@@ -42,9 +42,7 @@
 			Initialize();
 
 			function Initialize() {
-				scope.$watch('bookmarks', function (n, o) {
-					console.log(n, o);
-				});
+
 
 			}
 
@@ -58,7 +56,6 @@
 
 			function handleItemClicked(evt) {
 				evt.stopPropagation();
-				console.log(angular.element(angular.element(evt.currentTarget).find('bookmark-tree')[0]));
 				angular.element(angular.element(evt.currentTarget).find('bookmark-tree')[0]).toggleClass('hidden');
 			}
 		}

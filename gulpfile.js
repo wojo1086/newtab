@@ -80,7 +80,8 @@ gulp.task('copy-node-modules', function () {
 		'node_modules/angular-messages/angular-messages.min.js',
 		'node_modules/angular-material/angular-material.min.js',
 		'node_modules/@uirouter/angularjs/release/angular-ui-router.min.js',
-		'node_modules/chart.js/dist/Chart.bundle.min.js'
+		'node_modules/chart.js/dist/Chart.bundle.min.js',
+		'node_modules/angular-chart.js/dist/angular-chart.min.js'
 	])
 	.pipe(sourcemaps.init())
 	.pipe(concat('libs.js'))
