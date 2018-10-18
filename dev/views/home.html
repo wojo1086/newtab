@@ -48,10 +48,22 @@
 		</div>
 		<div flex>
 			<nt-panel header="'Storage'">
-				<div style="height: 100px;width: 100px;">
-					<canvas id="pie" class="chart chart-pie"
-					        chart-data="vm.data"
-					        chart-labels="vm.labels"></canvas>
+				<div layout="row" class="storage-pie">
+					<div flex>
+						<pie-chart style="display: inline-block;"
+						           data="vm.data"
+						           width="200"
+						           height="200"
+						           labels="vm.labels"></pie-chart>
+					</div>
+					<div flex>
+						<p>
+							Local: {{vm.data[0]}}
+						</p>
+						<p>
+							Sync: {{vm.data[1]}}
+						</p>
+					</div>
 				</div>
 			</nt-panel>
 		</div>

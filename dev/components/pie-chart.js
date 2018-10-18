@@ -2,21 +2,14 @@
 	'use strict';
 
 	angular.module('NewTab')
-		.directive('pieChart', pieChart);
-
-	function pieChart() {
-		return {
-			restrict: 'E',
-			scope: {
-				labels: '=',
-				data: '='
-			},
+		.component('pieChart', {
 			templateUrl: 'partials/pie-chart.html',
-			link: pieChartLink
-		};
-
-		function pieChartLink(scope, element, attrs) {
-			console.log(scope, element, attrs);
-		}
-	}
+			transclude: true,
+			bindings: {
+				data: '=',
+				labels: '=',
+				width: '=',
+				height: '='
+			}
+		});
 })();

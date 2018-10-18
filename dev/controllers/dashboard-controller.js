@@ -11,7 +11,6 @@
 		var vm = this;
 
 		vm.labels = ["Local", "Sync"];
-		vm.data = [10, 10];
 
 		MostVisitedService.getMostVisited().then(function(data) {
 			vm.topSites = data;
@@ -25,9 +24,9 @@
 			vm.bookmarks = bookmarks;
 		//});
 
-		StorageService.getAllData().then(function(data) {
-			vm.storage = data;
-
+		StorageService.getBytesInUse().then(function(data) {
+			vm.data = [data.local, 8];
+			//vm.data = [data.local, data.sync];
 			console.log(data);
 		});
 	}
